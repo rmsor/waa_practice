@@ -18,7 +18,8 @@
 
     <body>
 
-      <a href='JSPIntroServlet'>JSPIntroDemo</a>
+      <a href='JSPIntroServlet'>JSPIntroDemo</a><br/>
+      <a href="ChooseServlet">Choose</a>
 
     </body>
 
