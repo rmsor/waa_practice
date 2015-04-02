@@ -5,6 +5,7 @@
  */
 package edu.mum.cs545;
 
+import helpers.RadioState;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -38,7 +39,26 @@ public class ChooseServlet extends HttpServlet {
         } else {
             System.out.println("No choice made");
         }
-
+        /*--method 1---*/
+        String radioJSPCool=((String)request.getParameter("radioJSPCool"));
+        
+        String yesCheck=radioJSPCool.equals("1")?"checked":"";
+        String noCheck=radioJSPCool.equals("1")?"":"checked";
+        request.setAttribute("yesCheckKey", yesCheck);
+        request.setAttribute("noCheckKey", noCheck);
+        
+        /*---method 2-------*/
+        String JSFwayCool=((String)request.getParameter("JSFwayCool"));
+        RadioState rsObjCool=new RadioState();
+        if(JSFwayCool.equals("1")){
+            rsObjCool.setYesCheck("checked");
+            rsObjCool.setNoCheck("");
+        }else{
+            rsObjCool.setYesCheck("");
+            rsObjCool.setNoCheck("checked");
+        }
+        request.setAttribute("rsObjCool", rsObjCool);
+        
         RequestDispatcher dispatch = request.getRequestDispatcher("choose.jsp");
 
         dispatch.forward(request, response);
