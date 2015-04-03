@@ -19,20 +19,17 @@
     <form method='post' action='ChooseServlet'>
 
       <p>Is JSP cool?</p>
-      <% //String radioJSPCool=((String)request.getAttribute("radioJSPCool")).equals("1")?"checked":"";%>
-      <% //String radioJSPCoolN=((String)request.getAttribute("radioJSPCool")).equals("1")?"":"checked";%>
-       ${request.getAtrribute("radioJSPCool")}
-      <input type='radio' value='1' name='radioJSPCool' ><span>Yes</span><br/>
+      <input type='radio' value='1' name='radioJSPCool' ${yesCheckKey} ><span>Yes</span><br/>
 
-      <input type='radio' value='0' name='radioJSPCool' <%//=radioJSPCoolN%>><span>No</span><br/>
+      <input type='radio' value='0' name='radioJSPCool' ${noCheckKey}><span>No</span><br/>
 
       <input type='submit' name='btnSubmit' value='Submit'/>
 
       <p>Is JSF way cool?</p>
 
-      <input type='radio' value='1' name='JSFwayCool'><span>Yes</span><br/>
+      <input type='radio' value='1' name='JSFwayCool' ${rsObjCool.yesCheck}><span>Yes</span><br/>
 
-      <input type='radio' value='0' name='JSFwayCool'><span>No</span><br/>
+      <input type='radio' value='0' name='JSFwayCool' ${rsObjCool.noCheck}><span>No</span><br/>
 
       <input type='submit' name='btnSubmit' value='Submit'/>
 
