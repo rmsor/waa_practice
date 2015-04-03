@@ -32,7 +32,7 @@ public class QuizServlet extends HttpServlet {
         out.print("<p>Your current score is: ");
         out.print(sessQuiz.getNumCorrect() + "</br></br>");
         out.print("<p>Guess the next number in the sequence! ");
-        out.print("[" + currQuest + ", <span style='color:red;font-weight:bold'>?</span> ] </p>");
+        out.print(currQuest + "</p>");
 
         out.print("<p>Your answer:<input type='text' name='txtAnswer' value='' /></p> ");
 
@@ -63,27 +63,14 @@ public class QuizServlet extends HttpServlet {
         s.setAttribute("quiz", new Quiz());
         Quiz q = (Quiz) s.getAttribute("quiz");
         PrintWriter out = response.getWriter();
-        String currentQues = q.getCurrentQuestion();
-        genQuizPage(q, out, currentQues, false, null);
+        String currentQues=q.getCurrentQuestion();
+        genQuizPage(q,out,currentQues,false,null);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession s = request.getSession();
-        Quiz q = (Quiz) s.getAttribute("quiz");
-        String answer = (String) request.getParameter("txtAnswer");
-        Boolean isCorrect = q.isCorrect(answer);
-        if (isCorrect) {
-            q.scoreAnswer();
-        }
-        PrintWriter out = response.getWriter();
-        if (q.getCurrentQuestionIndex() >= q.getNumQuestions()) {
-            genQuizOverPage(out);
-        } else {
-            String currentQues = q.getCurrentQuestion();
-            genQuizPage(q, out, currentQues, !isCorrect, answer);
-        }
+
     }
 
 }

@@ -4,5 +4,10 @@
 /QuizServlet/build/
 /JSPDemo/nbproject/private/
 /JSPDemo/build/
+<<<<<<< HEAD
 /ForEachDemo/nbproject/private/
 /ForEachDemo/build/
+=======
+/QuizServletJSP/nbproject/private/
+/QuizServletJSP/build/
+>>>>>>> origin/master
