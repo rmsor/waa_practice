@@ -78,7 +78,7 @@ public class QuizServlet extends HttpServlet {
             q.scoreAnswer();
         }
         PrintWriter out = response.getWriter();
-        if (q.getCurrentQuestionIndex() > 4) {
+        if (q.getCurrentQuestionIndex() >= q.getNumQuestions()) {
             genQuizOverPage(out);
         } else {
             String currentQues = q.getCurrentQuestion();
