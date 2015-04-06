@@ -9,44 +9,44 @@ and open the template in the editor.
 
       xmlns:h="http://java.sun.com/jsf/html">
 
-    <h:head>
+   <h:head>
 
-        <title>A Simple JavaServer Faces Application</title>
+      <title>A Simple JavaServer Faces Application</title>
 
-    </h:head>
+   </h:head>
 
-    <h:body>
+   <h:body>
 
-        <h:form>
+      <h:form>
 
-            <h3>Please enter your name and password.</h3>
+         <h3>Please enter your name and password.</h3>
 
-            <table>
+         <table>
 
-                <tr>
+            <tr>
 
-                    <td>Name:</td>
+               <td>Name:</td>
 
-                    <td><h:inputText value="#{usr.name}" required="true"/></td>
+               <td><h:inputText value="#{usr.name}" required="true"/></td>
 
-                </tr>
+            </tr>
 
-                <tr>
+            <tr>
 
-                    <td>Password:</td>
+               <td>Password:</td>
 
-                    <td><h:inputSecret value="#{usr.password}"/></td>
+               <td><h:inputSecret value="#{usr.password}"/></td>
 
-                </tr>
+            </tr>
 
-            </table>
+         </table>
 
-            <h:outputText rendered="#{usr.error}" value='bad password'/>
+         <h:outputText rendered="#{usr.error}" value='bad password'/>
 
-            <p><h:commandButton value="Login" action="#{usr.onLogin}"/></p>
+         <p><h:commandButton value="Login" action="#{usr.onLogin}"/></p>
 
-        </h:form>
+      </h:form>
 
-    </h:body>
+   </h:body>
 
 </html>
