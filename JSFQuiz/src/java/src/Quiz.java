@@ -17,11 +17,11 @@ public class Quiz {
     private int currentQuestion=0;
     
     public Quiz(){
-        questions.add(new Question("3,1,4,1,5","9"));
-        questions.add(new Question("1,1,2,3,5","8"));
-        questions.add(new Question("1,4,9,16,25","36"));
-        questions.add(new Question("2,3,5,7,11","13"));
-        questions.add(new Question("1,2,4,8,16","32"));
+        questions.add(new Question("3,1,4,1,5","9","PI"));
+        questions.add(new Question("1,1,2,3,5","8","Fibonnaci"));
+        questions.add(new Question("1,4,9,16,25","36","Square"));
+        questions.add(new Question("2,3,5,7,11","13","Increment"));
+        questions.add(new Question("1,2,4,8,16","32","Double"));
     }
     public boolean isCorrect(String ans){
         return ans.equals(questions.get(currentQuestion).getAnswer());
@@ -40,6 +40,9 @@ public class Quiz {
     
     public String getCurrentQuestion(){
         return questions.get(currentQuestion).getQuestion();
+    }
+    public String getQuestionHint(){
+        return questions.get(currentQuestion).getHint();
     }
     
     public int getNumQuestions(){

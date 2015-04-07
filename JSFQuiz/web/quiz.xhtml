@@ -20,7 +20,8 @@ and open the template in the editor.
 
             <p>Your answer:<h:inputText value='#{QuizJSF.txtAnswer}'/></p> 
             <p style='color:red'>#{QuizJSF.msg}</p> 
-            <p><h:commandButton value="Submit" action="#{QuizJSF.checkAnswer}" /></p> 
+            <p><h:commandButton value="Submit" action="#{QuizJSF.checkAnswer}"  /></p> 
+            <p><h:commandButton value="HINT"  onclick="alert('#{QuizJSF.myQuiz.getQuestionHint()}')" /></p> 
         </h:form>
     </body>
 </html>
