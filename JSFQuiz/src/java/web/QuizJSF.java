@@ -23,6 +23,7 @@ public class QuizJSF implements Serializable {
     Quiz myQuiz;
     String txtAnswer;
     String msg;
+    int noOfTries = 0;
 
     public QuizJSF() {
         myQuiz = new Quiz();
@@ -40,6 +41,10 @@ public class QuizJSF implements Serializable {
         return msg;
     }
 
+    public int getNoOfTries() {
+        return noOfTries;
+    }
+
     public void setTxtAnswer(String txtAnswer) {
         this.txtAnswer = txtAnswer;
     }
@@ -53,8 +58,16 @@ public class QuizJSF implements Serializable {
             Boolean isCorrect = myQuiz.isCorrect(txtAnswer);
             if (isCorrect) {
                 myQuiz.scoreAnswer();
+                noOfTries = 0;
             } else {
-                msg = "Your last answer was not correct! Please try again";
+                if(noOfTries<3){
+                    noOfTries++;
+                }
+                if (noOfTries >= 3) {
+                    msg = "You have Exceded The 3 number of tries. Correct Answer is: " + myQuiz.getCorrectAns();
+                } else {
+                    msg = "Your last answer was not correct! Please try again";                    
+                }
             }
         }
         if (myQuiz.getCurrentQuestionIndex() >= myQuiz.getNumQuestions()) {
@@ -71,11 +84,7 @@ public class QuizJSF implements Serializable {
                 return false;
             }
             int inp = Integer.parseInt(str);
-            if (inp > 100 || inp < 4) {
-                return false;
-            } else {
-                return true;
-            }
+            return !(inp > 100 || inp < 4);
         } catch (NumberFormatException nfe) {
             return false;
         }

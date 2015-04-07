@@ -15,6 +15,7 @@ and open the template in the editor.
         <h:form>
             <h3>Have fun with NumberQuiz!</h3>
             <p>Your current score is: ${QuizJSF.myQuiz.getNumCorrect()}</p>
+            <p>Number of Tries : ${QuizJSF.noOfTries}/3</p>
             <p>Guess the next number in the sequence!  [ #{QuizJSF.myQuiz.getCurrentQuestion()} , 
                 <span style='color:red;font-weight:bold'>?</span> ] </p>
 

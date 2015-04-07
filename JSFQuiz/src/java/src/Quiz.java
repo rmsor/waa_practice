@@ -41,6 +41,9 @@ public class Quiz {
     public String getCurrentQuestion(){
         return questions.get(currentQuestion).getQuestion();
     }
+    public String getCorrectAns(){
+        return questions.get(currentQuestion).getAnswer();
+    }
     public String getQuestionHint(){
         return questions.get(currentQuestion).getHint();
     }
