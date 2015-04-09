@@ -7,50 +7,55 @@ package com.example.web;
 
 import com.example.model.Tea;
 import com.example.model.TeaExpert;
-import java.util.Set;
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import java.util.ArrayList;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-
 
 /**
  *
  * @author rmsor_000
  */
 @Named("tea")
-@RequestScoped
-public class TeaSelect {
+@SessionScoped
+public class TeaSelect implements Serializable {
 
-    String selecteTea;
+    private TeaExpert teaExp;
     
-    TeaExpert teaExp;
+    private double grandTotalPrice=0.00;
     
-    Tea objTea;
-    
-    
+    private ArrayList<Tea> selTeas;
+
     public TeaSelect() {
-       teaExp=new TeaExpert();
-    }
-    public String getTeaInfo(){
-        objTea= teaExp.findTea(selecteTea);
-        return "teadetail";
-    }
-
-    public String getSelecteTea() {
-        return selecteTea;
+        teaExp = new TeaExpert();
     }
 
     public TeaExpert getTeaExp() {
         return teaExp;
-    }    
-
-    public void setSelecteTea(String selecteTea) {
-        this.selecteTea = selecteTea;
     }
 
-    public Tea getObjTea() {
-        return objTea;
+    public String save() {
+        selTeas = new ArrayList();
+        grandTotalPrice=0.00;
+        for (Tea t : teaExp.getTeaList()) {
+            if(t.isEditable()){
+                selTeas.add(t);
+                grandTotalPrice+=t.getPrice()*t.getQuantity();
+            }
+            t.setEditable(false);
+        }
+        return "orderdetail";
+    }
+
+    public ArrayList<Tea> getSelTeas() {
+        return selTeas;
+    }
+
+    public double getGrandTotalPrice() {
+        return grandTotalPrice;
     }
     
     
     
+
 }

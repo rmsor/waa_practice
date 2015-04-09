@@ -5,11 +5,14 @@
  */
 package com.example.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author rmsor_000
  */
-public class Tea {
+public class Tea implements Serializable {
+
     String name;
     String description;
     String caffine;
@@ -19,8 +22,9 @@ public class Tea {
     String varities;
     int quantity;
     double price;
-
-    public Tea(String name, String description, String caffine, String healthBenifits, String waterTemperature, String sleepTime, String varities,double price) {
+    private boolean editable;
+    
+    public Tea(String name, String description, String caffine, String healthBenifits, String waterTemperature, String sleepTime, String varities, double price) {
         this.name = name;
         this.description = description;
         this.caffine = caffine;
@@ -29,6 +33,14 @@ public class Tea {
         this.sleepTime = sleepTime;
         this.varities = varities;
         this.price = price;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean newValue) {
+        editable = newValue;
     }
 
     public String getName() {
@@ -42,7 +54,7 @@ public class Tea {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -74,5 +86,5 @@ public class Tea {
     public int getQuantity() {
         return quantity;
     }
-    
+
 }
