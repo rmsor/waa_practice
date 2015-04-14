@@ -41,6 +41,10 @@ public class User implements Serializable {
     public Boolean getIsLoggedIn() {
         return isLoggedIn;
     }
+    public String logout(){
+        isLoggedIn=false;
+        return "login";
+    }
     
     /* send to login page if they are not logged in */
 
