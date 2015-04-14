@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/waa_practice/waa_practice/corejsf-book-sample/ch11/SimpleApplicationListener/web/index.xhtml</file>
-            <file>file:/D:/waa_practice/waa_practice/corejsf-book-sample/ch11/SimpleApplicationListener/src/java/beans/User.java</file>
+            <file>file:/D:/waa_practice/waa_practice/SimpleApplicationListener/web/version1.xhtml</file>
+            <file>file:/D:/waa_practice/waa_practice/SimpleApplicationListener/src/java/beans/User.java</file>
+            <file>file:/D:/waa_practice/waa_practice/SimpleApplicationListener/web/index.xhtml</file>
+            <file>file:/D:/waa_practice/waa_practice/SimpleApplicationListener/src/java/entities/Person.java</file>
         </group>
     </open-files>
 </project-private>

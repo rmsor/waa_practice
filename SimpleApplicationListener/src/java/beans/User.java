@@ -8,6 +8,7 @@ package beans;
 import entities.Person;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -22,6 +23,7 @@ public class User implements Serializable {
 
     private String firstName;
     private String lastName;
+    private String result;
     
     private ArrayList<Person> persons;
     
@@ -54,6 +56,26 @@ public class User implements Serializable {
     public ArrayList<Person> getPersons() {
         return persons;
     }
+    public String searchLastName(){
+        Iterator it=persons.iterator();
+        while(it.hasNext()){
+            Person ps=(Person) it.next();
+            if(ps.getFirstName().equals(firstName)){
+                return ps.getLastName();
+            }
+        }
+        return null;
+    }
+    
+    public void findLastName(){
+        result=searchLastName();
+    }
+
+    public String getResult() {
+        return result;
+    }
+    
+    
     
     
     
