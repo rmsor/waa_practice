@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
 
 
@@ -24,6 +25,7 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String result;
+    private String resultV2;
     
     private ArrayList<Person> persons;
     
@@ -56,23 +58,33 @@ public class User implements Serializable {
     public ArrayList<Person> getPersons() {
         return persons;
     }
-    public String searchLastName(){
+    public String searchLastName(String fName){
+        String serchNam=fName!=null?fName:firstName;
         Iterator it=persons.iterator();
         while(it.hasNext()){
             Person ps=(Person) it.next();
-            if(ps.getFirstName().equals(firstName)){
+            if(ps.getFirstName().equals(serchNam)){
                 return ps.getLastName();
             }
         }
         return null;
     }
     
-    public void findLastName(){
-        result=searchLastName();
+    public void findLastName(ValueChangeEvent e){
+        String newFirstName = e.getNewValue().toString();
+        result=searchLastName(newFirstName);
+    }
+    public String findLastNameV2(){
+        resultV2=searchLastName(null);
+        return "version3";
     }
 
     public String getResult() {
         return result;
+    }
+
+    public String getResultV2() {
+        return resultV2;
     }
     
     
