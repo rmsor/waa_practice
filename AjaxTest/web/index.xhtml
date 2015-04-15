@@ -7,20 +7,26 @@
         <h:outputStylesheet library="css" name="style.css"/>
         <script >
             var xhr;
-
+            
             function showDateAndTime() {
-
-                sendRequest("dateAndTime.ajax?type=date", // the URL
-
-                        processAjaxCall);   // the callback function
+                var url="";
+                if(window.document.getElementById("typeList").checked){
+                    url="dateAndTime.ajax?type=date";
+                }else{
+                    url="dateAndTime.faces?type=date";
+                }
+                
+                sendRequest(url,processAjaxCall);   // the callback function
 
             }
             function showTemperature() {
-
-                sendRequest("dateAndTime.ajax?type=temp", // the URL
-
-                        processAjaxCallTemp);   // the callback function
-
+                var url="";
+                if(window.document.getElementById("typeList").checked){
+                    url="dateAndTime.ajax?type=temp";
+                }else{
+                    url="dateAndTime.faces?type=temp";
+                }                
+                sendRequest(url,processAjaxCallTemp);  
             }
 
 
@@ -31,7 +37,7 @@
 
                 xhr.onreadystatechange = handler; // set callback function
                 
-                var aysnceT=window.document.getElementById("checkAsc").checked?true:false;
+                var aysnceT=window.document.getElementById("checkAsc").checked?true:false;                
                 //alert(aysnceT);
 
                 xhr.open("GET", url, aysnceT); // open asynchronous GET request
@@ -132,7 +138,10 @@
             <h:outputText value="#{pb.fullName}"/><br/>
 
             <input type="checkbox" value="Y" name="checkAsc" checked="true" id="checkAsc"/>Asynchronous<br/>
-
+            
+            <input type="radio" value="Servlet" name="typeList" id="typeList" checked="true"/> Servlet
+            <input type="radio" value="PhaseListener" name="typeList" /> Phase Listener <br/>
+            
             <h:commandButton type='submit' value='Submit' styleClass='button' action='person'/><br/>
 
             <input type="button" value="Show Date and Time" onclick="showDateAndTime();" class="button"/>
