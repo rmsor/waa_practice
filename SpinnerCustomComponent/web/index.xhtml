@@ -15,12 +15,10 @@
                        styleClass="pageTitle"/>
          <p/>
          <h:panelGrid columns="3">
-            #{msgs.monthPrompt}
-            <corejsf:spinner value="#{cardExpirationDate.month}"
+            <corejsf:spinner label="Month: " value="#{cardExpirationDate.month}"
                id="monthSpinner" minimum="1" maximum="12" size="3"/>
             <h:message for="monthSpinner"/>
-            #{msgs.yearPrompt}
-            <corejsf:spinner value="#{cardExpirationDate.year}"
+            <corejsf:spinner label="Year: " value="#{cardExpirationDate.year}"
                id="yearSpinner" minimum="1900" maximum="2100" size="5"/>
             <h:message for="yearSpinner"/>
          </h:panelGrid>
