@@ -17,7 +17,7 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import model.Protocol;
-import model.User;
+import model.UserInfo;
 
 /**
  *
@@ -27,7 +27,7 @@ import model.User;
 public class EmailSessionBean {
     @EJB
     private UserFacade userFacade;
-    private User user;
+    private UserInfo user;
     /**
      * port 587 for TLS/STARTTLS
      * port 465 for SSL

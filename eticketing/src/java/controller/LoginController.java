@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-import model.User;
+import model.UserInfo;
 
 /**
  *
@@ -19,7 +19,7 @@ import model.User;
 public class LoginController extends BaseController{
     @EJB
     private UserFacade userFacade;
-    private User user;
+    private UserInfo user;
     private String email;
 
     

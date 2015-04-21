@@ -28,7 +28,7 @@ import javax.inject.Named;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
-import model.User;
+import model.UserInfo;
 
 /**
  *
@@ -42,7 +42,7 @@ public class SignupController implements Serializable {
     private EmailSessionBean emailSessionBean;
     @Inject
     private UserFacade userFacade;
-    private User user;
+    private UserInfo user;
     private String firstName;
     private String lastName;
     private String email;
@@ -133,7 +133,7 @@ public class SignupController implements Serializable {
     public String saveRegInfo() {
         user = userFacade.findByEmail(email);
         if (user == null) {
-            user = new User();
+            user = new UserInfo();
             user.setEmail(email);
             user.setUserName(email);
             user.setProfilePic("test.jpg");

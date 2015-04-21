@@ -7,14 +7,14 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import model.User;
+import model.UserInfo;
 
 /**
  *
  * @author xtrememe
  */
 @Stateless
-public class UserFacade extends AbstractFacade<User> {
+public class UserFacade extends AbstractFacade<UserInfo> {
 
     @PersistenceContext(unitName = "eticketingPU")
     private EntityManager em;
@@ -25,19 +25,19 @@ public class UserFacade extends AbstractFacade<User> {
     }
 
     public UserFacade() {
-        super(User.class);
+        super(UserInfo.class);
     }
 
-    public User findByEmail(String email) {
+    public UserInfo findByEmail(String email) {
         try {
             if (email == null) {
                 email = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
             }
 
             String jpql = "SELECT u from User u where u.email = :email";
-            Query query = getEntityManager().createQuery(jpql, User.class);
+            Query query = getEntityManager().createQuery(jpql, UserInfo.class);
             query.setParameter("email", email);
-            return (User) query.getSingleResult();
+            return (UserInfo) query.getSingleResult();
 
         } catch (Exception e) {
 
@@ -48,7 +48,7 @@ public class UserFacade extends AbstractFacade<User> {
 
     public int updatePassword(String password, String email) {
         String jpql = "UPDATE User SET password = :pwd WHERE email = :email";
-        Query query = em.createQuery(jpql, User.class);
+        Query query = em.createQuery(jpql, UserInfo.class);
         query.setParameter("pwd", password);
         query.setParameter("email", email);
         return query.executeUpdate();
@@ -78,7 +78,7 @@ public class UserFacade extends AbstractFacade<User> {
                     + " WHERE id = :user_id";
         }
 
-        Query query = em.createQuery(jpql, User.class);
+        Query query = em.createQuery(jpql, UserInfo.class);
 
         query.setParameter("pwd", password);
         query.setParameter("email", email);
